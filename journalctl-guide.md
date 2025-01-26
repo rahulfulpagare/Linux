@@ -8,8 +8,6 @@ In Linux systems, **`journalctl`** is a powerful command-line tool for viewing a
 1. **View System Logs**: Access logs stored by the `systemd-journald` service.  
 2. **Real-Time Log Monitoring**: Tail logs as they are generated.  
 3. **Filter Logs**: Narrow down logs by time, service, priority, or even specific keywords.  
-4. **Persistent Logging**: Ensure logs are retained across system reboots.
-5. **Searchable and Structured Logs**: Quickly find logs based on detailed criteria.
 
 ---
 
@@ -19,13 +17,12 @@ In Linux systems, **`journalctl`** is a powerful command-line tool for viewing a
 ```bash
 journalctl
 ```
-View all logs since the system started, including application, kernel, and system logs.
 
 ### 2️⃣ View Logs in Real-Time
 ```bash
 journalctl -f
 ```
-*(Equivalent to `tail -f` for systemd logs)*. Useful for actively monitoring ongoing events.
+*(Equivalent to `tail -f` for systemd logs)*  
 
 ### 3️⃣ Filter Logs by Date and Time
 - Logs since yesterday:
@@ -40,28 +37,21 @@ journalctl -f
   ```bash
   journalctl --since="2022-10-01"
   ```
-- Logs from a specific boot session:
-  ```bash
-  journalctl -b 2
-  ```
 
 ### 4️⃣ Focus on a Specific Unit (e.g., Nginx)
 ```bash
 journalctl -u nginx.service
 ```
-Displays logs specific to the Nginx service. Replace `nginx.service` with the desired service name.
 
 ### 5️⃣ Search for Keywords in Logs
 ```bash
 journalctl | grep "ERROR"
 ```
-Combines `journalctl` with `grep` to search for specific keywords like "ERROR".
 
 ### 6️⃣ View Kernel Logs
 ```bash
 journalctl -k
 ```
-Retrieve only kernel-related logs for debugging hardware or kernel issues.
 
 ### 7️⃣ Filter Logs by Priority
 - View errors and critical messages:
@@ -72,37 +62,31 @@ Retrieve only kernel-related logs for debugging hardware or kernel issues.
   ```bash
   journalctl -p alert
   ```
-Priority levels range from 0 (emergency) to 7 (debug). Use these for targeted troubleshooting.
 
 ### 8️⃣ Filter Logs by Service (e.g., SSH)
 ```bash
 journalctl -u sshd
 ```
-Fetch logs related to the SSH service. Ideal for troubleshooting connectivity or authentication issues.
 
 ### 9️⃣ View Logs from Today
 ```bash
 journalctl --since=today
 ```
-Quickly access logs generated on the current date.
 
 ### 🔟 View Logs in Reverse Order
 ```bash
 journalctl -r
 ```
-Display logs starting from the newest entries.
 
 ### 11️⃣ Show Logs with Full Information
 ```bash
 journalctl -a
 ```
-Include all log fields in the output, ensuring maximum detail.
 
 ### 12️⃣ Display Limited Number of Lines
 ```bash
 journalctl -n 50
 ```
-Show the last 50 log entries. Adjust the number as needed.
 
 ---
 
@@ -113,7 +97,29 @@ sudo mkdir -p /var/log/journal
 sudo systemd-tmpfiles --create --prefix /var/log/journal
 sudo systemctl restart systemd-journald
 ```
-Without this, logs might be stored only in memory and lost after a reboot.
+# **Managing and Cleaning Old Logs**
+
+`journalctl` not only helps you view logs but also provides tools to manage and clean them, ensuring your system doesn’t run out of disk space due to excessive logs.
+
+## **Commands for Cleaning Logs:**
+
+### 1. **Delete Logs Based on Size**
+Limit the size of the log storage to, say, 500 MB:
+```bash
+journalctl --vacuum-size=500M
+```
+
+### 2. **Delete Logs Older Than a Certain Time**
+Remove logs older than 14 days:
+```bash
+journalctl --vacuum-time=14d
+```
+
+### 3. **Limit the Number of Logs Kept**
+Restrict the number of archived journal files to 10:
+```bash
+journalctl --vacuum-files=10
+```
 
 ---
 
@@ -134,7 +140,6 @@ Fetch logs from the last boot:
 ```bash
 journalctl -b
 ```
-For previous boots, specify the boot index (e.g., `-b -1` for the previous boot).
 
 ### Scenario 3: Analyzing Logs for a Time-Critical Incident
 Retrieve logs for a priority level "error" to quickly assess issues:
@@ -148,32 +153,16 @@ Filter logs for a specific network-related service:
 journalctl -u NetworkManager --since=yesterday
 ```
 
-### Scenario 5: Finding Hardware Errors
-Combine kernel logs with specific search terms:
-```bash
-journalctl -k | grep -i "hardware"
-```
-
-### Scenario 6: Monitoring SSH Login Attempts
-Track successful and failed SSH logins:
-```bash
-journalctl -u sshd | grep -i "authentication"
-```
-
 ---
 
 ## **Why Use `journalctl`?**
 - Simplifies log management with centralized storage.  
 - Enables advanced filtering and debugging.  
-- Provides detailed, structured logs for precise troubleshooting.  
-- Makes system administration more efficient and reliable.
+- A must-have skill for Linux professionals striving for efficiency.  
 
 ---
 
 ## **Pro Tip**
-Combine `journalctl` with other tools like `grep` or monitoring solutions for enhanced log management. For example, use `watch` to monitor real-time logs:
-```bash
-watch -n 1 'journalctl -u nginx.service -n 10'
-```
+Combine `journalctl` with other tools like `grep` or monitoring solutions for enhanced log management.  
 
 How do you use `journalctl` in your daily workflow? Share your thoughts in the comments! 🚀
