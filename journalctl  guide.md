@@ -97,6 +97,29 @@ sudo mkdir -p /var/log/journal
 sudo systemd-tmpfiles --create --prefix /var/log/journal
 sudo systemctl restart systemd-journald
 ```
+# **Managing and Cleaning Old Logs**
+
+`journalctl` not only helps you view logs but also provides tools to manage and clean them, ensuring your system doesn’t run out of disk space due to excessive logs.
+
+## **Commands for Cleaning Logs:**
+
+### 1. **Delete Logs Based on Size**
+Limit the size of the log storage to, say, 500 MB:
+```bash
+journalctl --vacuum-size=500M
+```
+
+### 2. **Delete Logs Older Than a Certain Time**
+Remove logs older than 14 days:
+```bash
+journalctl --vacuum-time=14d
+```
+
+### 3. **Limit the Number of Logs Kept**
+Restrict the number of archived journal files to 10:
+```bash
+journalctl --vacuum-files=10
+```
 
 ---
 
