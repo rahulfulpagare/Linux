@@ -1,3 +1,66 @@
+## Self-Services and `xinetd` Server
+
+### Self-Services
+Self-services are services that are typically managed by individual users or applications rather than by the system administrator. These services are usually run as non-root users and do not require system-wide privileges. 
+
+#### Managing Self-Services:
+- Start a self-service using the command line:
+  ```bash
+  ./<service_script>
+  ```
+- Check logs (if available):
+  ```bash
+  cat ~/logs/<service_name>.log
+  ```
+
+#### Example:
+- A personal web server or development server for testing purposes.
+
+### `xinetd` Server
+The `xinetd` (eXtended Internet Services Daemon) is a super-server daemon that manages multiple network-based services. It listens for incoming requests for the services it manages and starts the appropriate service when a request is received.
+
+#### Configuration
+- Configuration files are stored in:
+  ```bash
+  /etc/xinetd.d/
+  ```
+- Global configuration is located at:
+  ```bash
+  /etc/xinetd.conf
+  ```
+
+#### Commands:
+- To check the status of `xinetd`:
+  ```bash
+  sudo systemctl status xinetd
+  ```
+- To restart `xinetd` after making changes:
+  ```bash
+  sudo systemctl restart xinetd
+  ```
+
+#### Example Configuration File:
+```conf
+service ftp
+{
+    disable         = no
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = root
+    server          = /usr/sbin/vsftpd
+    log_on_success  += USERID
+    log_on_failure  += HOST
+}
+```
+
+#### Advantages:
+- Centralized management of services.
+- On-demand service activation to save resources.
+
+#### Note:
+Modern Linux systems have largely replaced `xinetd` with `systemd` socket activation. However, it is still used in certain scenarios.
+
 # Managing Services in Linux
 
 ## Check Service Status
@@ -142,65 +205,3 @@ sudo systemctl poweroff
 
 ---
 
-## Self-Services and `xinetd` Server
-
-### Self-Services
-Self-services are services that are typically managed by individual users or applications rather than by the system administrator. These services are usually run as non-root users and do not require system-wide privileges. 
-
-#### Managing Self-Services:
-- Start a self-service using the command line:
-  ```bash
-  ./<service_script>
-  ```
-- Check logs (if available):
-  ```bash
-  cat ~/logs/<service_name>.log
-  ```
-
-#### Example:
-- A personal web server or development server for testing purposes.
-
-### `xinetd` Server
-The `xinetd` (eXtended Internet Services Daemon) is a super-server daemon that manages multiple network-based services. It listens for incoming requests for the services it manages and starts the appropriate service when a request is received.
-
-#### Configuration
-- Configuration files are stored in:
-  ```bash
-  /etc/xinetd.d/
-  ```
-- Global configuration is located at:
-  ```bash
-  /etc/xinetd.conf
-  ```
-
-#### Commands:
-- To check the status of `xinetd`:
-  ```bash
-  sudo systemctl status xinetd
-  ```
-- To restart `xinetd` after making changes:
-  ```bash
-  sudo systemctl restart xinetd
-  ```
-
-#### Example Configuration File:
-```conf
-service ftp
-{
-    disable         = no
-    socket_type     = stream
-    protocol        = tcp
-    wait            = no
-    user            = root
-    server          = /usr/sbin/vsftpd
-    log_on_success  += USERID
-    log_on_failure  += HOST
-}
-```
-
-#### Advantages:
-- Centralized management of services.
-- On-demand service activation to save resources.
-
-#### Note:
-Modern Linux systems have largely replaced `xinetd` with `systemd` socket activation. However, it is still used in certain scenarios.
