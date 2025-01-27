@@ -106,6 +106,28 @@ To disable all services that match a specific pattern:
 sudo systemctl disable '<pattern>'
 ```
 
+### Controlling Services
+#### Start/Stop Multiple Services
+To start or stop multiple services at once:
+```bash
+sudo systemctl start <service1> <service2> <service3>
+```
+```bash
+sudo systemctl stop <service1> <service2> <service3>
+```
+
+#### Restart Multiple Services
+To restart multiple services:
+```bash
+sudo systemctl restart <service1> <service2> <service3>
+```
+
+#### Reload All Services
+To reload all services:
+```bash
+sudo systemctl daemon-reload
+```
+
 ### Reboot the System
 To reboot the system safely:
 ```bash
