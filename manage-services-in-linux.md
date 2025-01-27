@@ -1,4 +1,3 @@
-
 # Managing Services in Linux
 
 ## Introduction to Services in Linux
