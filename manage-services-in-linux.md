@@ -80,3 +80,40 @@ sudo systemctl mask <service_name>
 To allow a previously masked service to be started again:
 ```bash
 sudo systemctl unmask <service_name>
+```
+
+### Check Logs for a Service
+To view logs of a specific service:
+```bash
+sudo journalctl -u <service_name>
+```
+
+### View Logs in Real-Time
+To monitor logs of a specific service in real-time:
+```bash
+sudo journalctl -u <service_name> -f
+```
+
+### Stop All Services Matching a Pattern
+To stop all services that match a specific pattern:
+```bash
+sudo systemctl stop '<pattern>'
+```
+
+### Disable All Services Matching a Pattern
+To disable all services that match a specific pattern:
+```bash
+sudo systemctl disable '<pattern>'
+```
+
+### Reboot the System
+To reboot the system safely:
+```bash
+sudo systemctl reboot
+```
+
+### Shutdown the System
+To power off the system safely:
+```bash
+sudo systemctl poweroff
+```
