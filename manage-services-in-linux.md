@@ -202,4 +202,3 @@ To power off the system safely:
 ```bash
 sudo systemctl poweroff
 ```
-```
