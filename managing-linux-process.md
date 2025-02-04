@@ -76,3 +76,24 @@ A process is a running instance of a program. It consists of code, data, and sys
 ## Handling Zombie Processes
 - `ps aux | grep Z` - Identify zombie processes.
 - `kill -SIGCHLD <Parent_PID>` - Ask parent process to reap zombies.
+
+## Process Environment Variables
+- `env` - Show all environment variables.
+- `printenv PATH` - Show the value of the `PATH` variable.
+- `export VAR=value` - Set an environment variable.
+- `unset VAR` - Remove an environment variable.
+
+## Daemon Processes
+- Long-running background processes.
+- Example: `systemd` manages daemons on modern Linux systems.
+- `systemctl list-units --type=service` - List all active services.
+
+## Process Resource Limits
+- `ulimit -a` - Show all resource limits.
+- `ulimit -u 500` - Set the max number of user processes.
+- `ulimit -n 1024` - Set the max number of open file descriptors.
+
+## Cgroup (Control Groups) for Process Control
+- `cgcreate -g cpu,memory:/mygroup` - Create a new cgroup.
+- `cgexec -g cpu,memory:/mygroup command` - Run a process inside a cgroup.
+- `cat /sys/fs/cgroup/cpu/mygroup/cpu.shares` - Check CPU shares assigned.
