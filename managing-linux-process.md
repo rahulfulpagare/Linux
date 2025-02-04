@@ -45,10 +45,34 @@ A process is a running instance of a program. It consists of code, data, and sys
 - `nice -n -20 firefox` - Set highest priority for `firefox`
 - `nice -n -10 -p 7124` - Change nice value of process `7124`
 
-## System Monitoring Commands
+## Foreground & Background Process Control
+- `&` - Run a process in the background (e.g., `firefox &`).
+- `jobs` - List background jobs.
+- `fg %1` - Bring job 1 to the foreground.
+- `bg %1` - Resume job 1 in the background.
+- `disown -h %1` - Remove job from shell job list without stopping it.
+
+## Process Scheduling & CPU Affinity
+- `renice -n 10 -p <PID>` - Adjust process priority dynamically.
+- `taskset -c 0,1 <command>` - Bind a process to specific CPU cores.
+- `chrt -p <PID>` - Show process scheduling policy.
+
+## Monitoring System Performance
 - `uptime` - Show system uptime and load average
 - `who` - Display logged-in users
 - `w` - Show active users and system load
 - `uname -r` - Display kernel version
 - `last` - Show last login history
 - `lastb` - Show failed authentication attempts
+- `htop` - Interactive process viewer (better than `top`).
+- `iostat -c 1` - Monitor CPU usage in real-time.
+- `vmstat 1` - Display system performance statistics.
+
+## Tracing & Debugging Processes
+- `strace -p <PID>` - Trace system calls of a process.
+- `lsof -p <PID>` - List files opened by a process.
+- `gdb -p <PID>` - Debug running process.
+
+## Handling Zombie Processes
+- `ps aux | grep Z` - Identify zombie processes.
+- `kill -SIGCHLD <Parent_PID>` - Ask parent process to reap zombies.
