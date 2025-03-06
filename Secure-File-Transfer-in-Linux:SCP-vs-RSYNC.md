@@ -17,23 +17,23 @@ scp [options] source destination
 ### 🔹 Common Usage Examples
 1️⃣ **Copy a file from local to remote:**
 ```bash
-scp file.txt user@remote:/path/to/destination/
+scp file.txt rahul@192.168.110.1:/path/to/destination/
 ```
 2️⃣ **Copy a file from remote to local:**
 ```bash
-scp user@remote:/path/to/file.txt /local/destination/
+scp rahul@192.168.110.1:/path/to/file.txt /local/destination/
 ```
 3️⃣ **Copy a directory recursively:**
 ```bash
-scp -r /local/directory user@remote:/remote/destination/
+scp -r /local/directory rahul@192.168.110.1:/remote/destination/
 ```
 4️⃣ **Specify a custom SSH port:**
 ```bash
-scp -P 2222 file.txt user@remote:/path/
+scp -P 2222 file.txt rahul@192.168.110.1:/path/
 ```
 5️⃣ **Limit bandwidth usage:**
 ```bash
-scp -l 500 file.txt user@remote:/path/  # Limits speed to 500Kbps
+scp -l 500 file.txt rahul@192.168.110.1:/path/  # Limits speed to 500Kbps
 ```
 
 ### ✅ Pros of SCP
@@ -60,27 +60,27 @@ rsync [options] source destination
 ### 🔹 Common Usage Examples
 1️⃣ **Copy a file from local to remote:**
 ```bash
-rsync file.txt user@remote:/path/to/destination/
+rsync file.txt rahul@192.168.110.1:/path/to/destination/
 ```
 2️⃣ **Copy a directory recursively with progress display:**
 ```bash
-rsync -avz /local/directory/ user@remote:/remote/destination/
+rsync -avz /local/directory/ rahul@192.168.110.1:/remote/destination/
 ```
 3️⃣ **Copy files from remote to local:**
 ```bash
-rsync -avz user@remote:/path/ /local/destination/
+rsync -avz rahul@192.168.110.1:/path/ /local/destination/
 ```
 4️⃣ **Use SSH and specify a port:**
 ```bash
-rsync -e "ssh -p 2222" -avz /local/path/ user@remote:/remote/path/
+rsync -e "ssh -p 2222" -avz /local/path/ rahul@192.168.110.1:/remote/path/
 ```
 5️⃣ **Resume interrupted transfers:**
 ```bash
-rsync --partial --progress -avz file.txt user@remote:/path/
+rsync --partial --progress -avz file.txt rahul@192.168.110.1:/path/
 ```
 6️⃣ **Delete files in the destination that no longer exist in the source:**
 ```bash
-rsync --delete -avz /local/path/ user@remote:/remote/path/
+rsync --delete -avz /local/path/ rahul@192.168.110.1:/remote/path/
 ```
 
 ### ✅ Pros of RSYNC
@@ -131,3 +131,4 @@ Both tools are **powerful** and have their specific use cases. Choose the right 
 If you found this guide useful, share it with your network and stay tuned for more Linux tips! 🎯
 
 #Linux #SCP #RSYNC #DevOps #SysAdmin #Cloud #Automation #FileTransfer
+
