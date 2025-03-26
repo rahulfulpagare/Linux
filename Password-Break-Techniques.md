@@ -37,6 +37,8 @@
 ## ⚠️ Ctrl+D Error (Maintenance Mode Issue)
 
 ### Possible Causes:
+- If there is a mistake in `/etc/fstab`, the system will drop into maintenance mode, and pressing **Ctrl+D** will not fix the issue.
+- Corrupt filesystem
 - Corrupt filesystem
 - Incorrect `/etc/fstab` entries
 - Missing system files
@@ -48,6 +50,10 @@ reboot
 ```
 
 ### Fix 2: Check `/etc/fstab`
+- If you suspect an error in `/etc/fstab`, boot into **rescue mode** and correct it.
+- Use `vim /etc/fstab` to check for incorrect mount points or syntax errors.
+- Comment out problematic entries with `#` to prevent system failure.
+- Reboot.
 - Boot into **rescue mode**.
 - Use `vim /etc/fstab` to check for incorrect mount points.
 - Comment out problematic entries with `#`.
