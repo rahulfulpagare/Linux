@@ -5,7 +5,7 @@
 ### RHEL-based Systems (CentOS, Fedora, Rocky Linux, AlmaLinux)
 1. **Boot into GRUB Menu**
    - Restart the system and press **`Esc`** (for BIOS) or **`Shift`** (for UEFI) repeatedly during boot.
-   - In the GRUB menu, highlight the kernel line and press **`e`** to edit.
+   - In the GRUB menu, highlight the kernel line (the line starting with `linux`) and press **`End`** to go to the last part of the line, then press **`e`** to edit.
    - Find the line starting with `linux` and add `rd.break` at the end.
 2. **Remount and Access Root Shell**
    ```bash
