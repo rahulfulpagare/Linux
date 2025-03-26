@@ -47,7 +47,7 @@ reboot
 
 ### Fix 2: Check `/etc/fstab`
 - Boot into **rescue mode**.
-- Use `nano /etc/fstab` to check for incorrect mount points.
+- Use `vim /etc/fstab` to check for incorrect mount points.
 - Comment out problematic entries with `#`.
 - Reboot.
 
