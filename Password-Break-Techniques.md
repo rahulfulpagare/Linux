@@ -4,7 +4,8 @@
 
 ### RHEL-based Systems (CentOS, Fedora, Rocky Linux, AlmaLinux)
 1. **Boot into GRUB Menu**
-   - Restart the system and press **`e`** in GRUB.
+   - Restart the system and press **`Esc`** (for BIOS) or **`Shift`** (for UEFI) repeatedly during boot.
+   - In the GRUB menu, highlight the kernel line and press **`e`** to edit.
    - Find the line starting with `linux` and add `rd.break` at the end.
 2. **Remount and Access Root Shell**
    ```bash
@@ -21,8 +22,9 @@
 
 ### Debian-based Systems (Ubuntu, Debian, Kali Linux)
 1. **Boot into Recovery Mode**
+   - Restart the system and press **`Esc`** or **`Shift`** during boot to access GRUB.
    - Select `Advanced Options` → `Recovery Mode` → `Drop to root shell`.
-   - If using GRUB, edit the kernel line and add `init=/bin/bash`.
+   - If using GRUB, highlight the kernel line, press **`e`**, and add `init=/bin/bash`.
 2. **Remount Root and Reset Password**
    ```bash
    mount -o remount,rw /
