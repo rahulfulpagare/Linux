@@ -43,7 +43,7 @@
 
 ### Fix 1: Filesystem Check
 ```bash
-fsck -y /dev/sdX
+fsck -y /dev/sda
 reboot
 ```
 
