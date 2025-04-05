@@ -5,7 +5,7 @@
 ### RHEL-based Systems (CentOS, Fedora, Rocky Linux, AlmaLinux)
 1. **Boot into GRUB Menu**
    - Restart the system and press **`Esc`** (for BIOS) or **`Shift`** (for UEFI) repeatedly during boot.
-   - In the GRUB menu, select the kernel version you want to boot (usually the latest one at the top).
+   - In the GRUB menu, select the kernel version you want to boot (usually the second one at the top).
    - Highlight the kernel line (the line starting with `linux`) and press **`End`** to go to the last part of the line, then press **`e`** to edit.
    - Find the line starting with `linux` and add `rd.break` at the end.
    - Restart the system and press **`Esc`** (for BIOS) or **`Shift`** (for UEFI) repeatedly during boot.
@@ -39,41 +39,5 @@
    passwd root
    reboot
    ```
-
----
-
-## ⚠️ Ctrl+D Error (Maintenance Mode Issue)
-
-### Possible Causes:
-- If there is a mistake in `/etc/fstab`, the system will drop into maintenance mode, and pressing **Ctrl+D** will not fix the issue.
-- Corrupt filesystem
-- Corrupt filesystem
-- Incorrect `/etc/fstab` entries
-- Missing system files
-
-### Fix 1: Filesystem Check
-```bash
-fsck -y /dev/sda
-reboot
-```
-
-### Fix 2: Check `/etc/fstab`
-- If you suspect an error in `/etc/fstab`, boot into **rescue mode** and correct it.
-- Use `vim /etc/fstab` to check for incorrect mount points or syntax errors.
-- Comment out problematic entries with `#` to prevent system failure.
-- Reboot.
-- Boot into **rescue mode**.
-- Use `vim /etc/fstab` to check for incorrect mount points.
-- Comment out problematic entries with `#`.
-- Reboot.
-
-### Fix 3: Restore `/etc/passwd` or `/etc/shadow`
-```bash
-cp /etc/passwd- /etc/passwd
-cp /etc/shadow- /etc/shadow
-reboot
-```
-
----
 
 **Note:** Always take a backup before making critical system changes! 🔥
