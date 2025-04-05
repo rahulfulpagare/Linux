@@ -5,7 +5,7 @@
 ### RHEL-based Systems (CentOS, Fedora, Rocky Linux, AlmaLinux)
 1. **Boot into GRUB Menu**
    - Restart the system and press **`Esc`** (for BIOS) or **`Shift`** (for UEFI) repeatedly during boot.
-   - In the GRUB menu, select the kernel version you want to boot (usually the second one at the top).
+   - In the GRUB menu, select the kernel version you want to boot (usually the second one ).
    - Highlight the kernel line (the line starting with `linux`) and press **`End`** to go to the last part of the line, then press **`e`** to edit.
    - Find the line starting with `linux` and add `rd.break` at the end.
    - Restart the system and press **`Esc`** (for BIOS) or **`Shift`** (for UEFI) repeatedly during boot.
